@@ -1,0 +1,37 @@
+getLocation(); //find coordinates and fill in hidden input fields
+	function getLocation() 
+		{
+		  if (navigator.geolocation) {	navigator.geolocation.getCurrentPosition(showPosition, showError);	  } 
+		  else {	alert( "Geolocation is not supported by this browser.");	 }
+		}
+
+	function showPosition(position) 
+		{
+			var latitude=position.coords.latitude; 
+			var longitude=position.coords.longitude;			
+			document.getElementById("lat").value = latitude;  
+		    document.getElementById("lon").value = longitude;
+	    }
+		function showError(error) 
+		{
+		  switch(error.code) 
+		  {
+				case error.PERMISSION_DENIED:
+				  alert("User denied the request for Geolocation.");
+				  break;
+				case error.POSITION_UNAVAILABLE:
+				  alert("Location information is unavailable.");
+				  break;
+				case error.TIMEOUT:
+				  alert("The request to get user location timed out.");
+				  break;
+				case error.UNKNOWN_ERROR:
+				  alert("An unknown error occurred.");
+				  break;
+		  }
+		} 
+		
+		
+		
+		//imp.
+		<a href="https://www.latlong.net/c/?lat=34.085763&long=74.796700" target="_blank">(34.085763, 74.796700)</a>

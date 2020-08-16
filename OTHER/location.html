@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+
+<input type="text" name="loc" id="loc" size="30"><br>
+<button onclick="getLocation();">Show location</button>
+
+
+
+<script>
+function getLocation() 
+						{
+						  if (navigator.geolocation) {	navigator.geolocation.getCurrentPosition(showPosition, showError);	  } 
+						  else {	alert( "Geolocation is not supported by this browser.");	 }
+						}
+		function showPosition(position) 
+						{
+							console.log(position.coords.latitude);
+							 document.getElementById("loc").value=position.coords.latitude; 
+							 document.getElementById("loc").value+=","+position.coords.longitude;
+							 
+						 
+						}
+					function showError(error) 
+						{
+						  switch(error.code) 
+						  {
+								case error.PERMISSION_DENIED:
+								  alert("You denied the request for Geolocation.");
+								  break;
+								case error.POSITION_UNAVAILABLE:
+								  alert(" Your Location information is unavailable.");
+								  break;
+								case error.TIMEOUT:
+								  alert("The request to get Your location timed out.");
+								  break;
+								case error.UNKNOWN_ERROR:
+								  alert("An unknown error occurred.");
+								  break;
+						  }
+						} 
+					
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<?php
+	session_start();
+	if(isset($_POST['customer_logout']))
+	{
+		unset($_SESSION['user_id']);
+		header('location:index.php');
+	}
+	if(isset($_POST['dealer_logout']))
+	{
+		unset($_SESSION['dealer_id']);
+		header('location:index.php');
+	}
+	if(isset($_POST['worker_logout']))
+	{
+		unset($_SESSION['worker_id']);
+		header('location:index.php');
+	}
+?>
